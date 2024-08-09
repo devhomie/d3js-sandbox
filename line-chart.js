@@ -24,7 +24,7 @@ const drawLineChart = (data) => {
     .append("svg")
     .attr("viewBox", `0, 0, ${width}, ${height}`);
 
-  // Append a 'g' element into the SVG container - positioned to desired location - using margin values in the margin object created above
+  // Append a 'g' element into the SVG container - positioned to desired location - using margin values from the margin object created above
   const innerChart = svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -59,6 +59,17 @@ const drawLineChart = (data) => {
   innerChart.append("g").attr("class", "axis-y").call(leftAxis);
   // Append text label for the y-axis
   svg.append("text").text("Tempature (°F)").attr("y", 20);
+
+  const aubergine = "#75485E";
+
+  innerChart
+    .selectAll("circle")
+    .data(data)
+    .join("circle")
+    .attr("r", 4)
+    .attr("cx", (d) => xScale(d.date))
+    .attr("cy", (d) => yScale(d.avg_temp_F))
+    .attr("fill", aubergine);
 
   // Select the line elements and text elements in the 'g' element of both y and x axis - then manipulate text and ticks to desired format
   d3.selectAll(".axis-x text, .axis-y text")
