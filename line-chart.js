@@ -71,6 +71,30 @@ const drawLineChart = (data) => {
     .attr("cy", (d) => yScale(d.avg_temp_F))
     .attr("fill", aubergine);
 
+  //****************** */
+  // Area Genarator - drawing the colored area BEHIND line generator
+  //****************** */
+
+  const areaGenerator = d3
+    .area()
+    .x((d) => xScale(d.date))
+    .y0((d) => yScale(d.min_temp_F))
+    .y1((d) => yScale(d.max_temp_F))
+    .curve(d3.curveCatmullRom);
+
+  innerChart
+    .append("path")
+    .attr("d", areaGenerator(data))
+    .attr("fill", aubergine)
+    .attr("fill-opacity", 0.2);
+
+  //****************** */
+  // Area Genarator - drawing the colored area BEHIND line generator
+  //****************** */
+
+  //****************** */
+  // Line Genarator - drawing the line
+  //****************** */
   const lineGenerator = d3
     .line()
     .x((d) => xScale(d.date))
@@ -82,6 +106,9 @@ const drawLineChart = (data) => {
     .attr("d", lineGenerator(data))
     .attr("fill", "none")
     .attr("stroke", aubergine);
+  //****************** */
+  // Line Genarator
+  //****************** */
 
   // Select the line elements and text elements in the 'g' element of both y and x axis - then manipulate text and ticks to desired format
   d3.selectAll(".axis-x text, .axis-y text")
