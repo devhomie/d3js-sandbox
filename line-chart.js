@@ -74,9 +74,14 @@ const drawLineChart = (data) => {
   const lineGenerator = d3
     .line()
     .x((d) => xScale(d.date))
-    .y((d) => yScale(d.avg_temp_F));
+    .y((d) => yScale(d.avg_temp_F))
+    .curve(d3.curveCatmullRom);
 
-  innerChart.append("path").attr("d", lineGenerator(data)).attr("fill", "none").attr("stroke", aubergine);
+  innerChart
+    .append("path")
+    .attr("d", lineGenerator(data))
+    .attr("fill", "none")
+    .attr("stroke", aubergine);
 
   // Select the line elements and text elements in the 'g' element of both y and x axis - then manipulate text and ticks to desired format
   d3.selectAll(".axis-x text, .axis-y text")
