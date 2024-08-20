@@ -29,7 +29,12 @@ const drawDonutCharts = (data) => {
     formats.forEach((format) => {
       formattedData.push({ format: format, sales: yearData[format] });
     });
-    // console.log(formattedData);
+    console.log(formattedData);
+
+    const pieGenerator = d3.pie().value(d => d.sales);
+
+    const annotatedData = pieGenerator(formattedData);
     
+
   });
 };
