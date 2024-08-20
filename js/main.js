@@ -4,7 +4,7 @@ const svg = d3
   .attr("viewBox", "0 0 600 700")
   .style("border", "1px solid black");
 
-d3.csv("./data/data.csv", (d) => {
+d3.csv("../data/main-js-data.csv", (d) => {
   return {
     technology: d.technology,
     count: +d.count,

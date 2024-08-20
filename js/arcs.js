@@ -1,6 +1,6 @@
 // Load the data here
 
-d3.csv("./data/daily_precipitations.csv", d3.autoType).then((data) => {
+d3.csv("../data/daily_precipitations.csv", d3.autoType).then((data) => {
   console.log("percipitation data", data);
   drawArc(data);
 });

@@ -1,0 +1,74 @@
+
+
+.nav-wrapper{
+ /* Position the nav at the top */
+
+ position: fixed;
+
+ top: 0;
+
+ left: 0;
+
+ right: 0;
+
+ /* Add some space between the nav and content */
+
+ z-index: 1000;
+
+ background-color: #fcfccc; /* Dark background for contrast */
+ border: 2px solid black;
+
+ padding: 20px ; 
+}
+
+/* Navigation list styles */
+
+.nav-wrapper ul {
+
+  /* Use flexbox for easy centering */
+
+  display: flex;
+
+  justify-content: center;
+
+  list-style-type: none;
+
+  padding: 0;
+
+  margin: 0;
+
+}
+
+/* Navigation item styles */
+
+.nav-wrapper li {
+
+  margin: 0 15px;
+
+}
+
+
+/* Navigation link styles */
+
+.nav-wrapper a {
+
+  color: black;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  transition: color 0.3s ease;
+
+}
+
+
+/* Hover effect for links */
+
+.nav-wrapper a:hover {
+
+  color: #111fff; /* Gold color for hover */
+
+}
