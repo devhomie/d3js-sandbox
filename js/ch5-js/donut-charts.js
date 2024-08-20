@@ -37,7 +37,7 @@ const drawDonutCharts = (data) => {
 
     const arcGenerator = d3.arc().startAngle(d => d.startAngle).endAngle(d => d.endAngle).innerRadius(60).outerRadius(100).padAngle(0.02).cornerRadius(3);
 
-    const arcs = donutContainer.selectAll(`.arc-${year}`).data(annotatedData).join("path").attr("class", `arc-${year}`).attr("d", arcGenerator);
+    const arcs = donutContainer.selectAll(`.arc-${year}`).data(annotatedData).join("path").attr("class", `arc-${year}`).attr("d", arcGenerator).attr("fill", d => colorScale(d.data.format));
     
 
   });
