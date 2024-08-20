@@ -34,6 +34,10 @@ const drawDonutCharts = (data) => {
     const pieGenerator = d3.pie().value(d => d.sales);
 
     const annotatedData = pieGenerator(formattedData);
+
+    const arcGenerator = d3.arc().startAngle(d => d.startAngle).endAngle(d => d.endAngle).innerRadius(60).outerRadius(100).padAngle(0.02).cornerRadius(3);
+
+    const arcs = donutContainer.selectAll(`.arc-${year}`).data(annotatedData).join("path").attr("class", `arc-${year}`).attr("d", arcGenerator);
     
 
   });
