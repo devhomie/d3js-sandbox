@@ -2,10 +2,7 @@ const drawStackedBars = (data) => {
   // Generate the stacked bar chart here
   const stackGenerator = d3.stack().keys(formatsInfo.map((f) => f.id));
 
-
-  
   const annotatedData = stackGenerator(data);
-
 
   const maxUpperBoundary = d3.max(
     annotatedData[annotatedData.length - 1],
@@ -21,6 +18,7 @@ const drawStackedBars = (data) => {
   /*******************************/
   /*    Append the containers    */
   /*******************************/
+
   const svg = d3
     .select("#bars")
     .append("svg")
@@ -42,4 +40,20 @@ const drawStackedBars = (data) => {
       .attr("height", (d) => yScale(d[0]) - yScale(d[1]))
       .attr("fill", colorScale(series.key));
   });
+
+  /*******************************/
+  /*    Append the Axes containers    */
+  /*******************************/
+
+  const bottomAxis = d3
+    .axisBottom(xScale)
+    .tickValues(d3.range(1975, 2020, 5))
+    .tickSizeOuter(0);
+  innerChart
+    .append("g")
+    .attr("transform", `translate(0,${innerHeight})`)
+    .call(bottomAxis);
+
+  const leftAxis = d3.axisLeft(yScale);
+  innerChart.append("g").call(leftAxis);
 };
